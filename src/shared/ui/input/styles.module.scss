@@ -43,6 +43,18 @@
     }
   }
 
+  &.filled {
+    border-color: var(--orange-secondary);
+
+    label {
+      transition: all 0.3s;
+      color: var(--orange-secondary);
+      top: -9px;
+      left: 32px;
+      font-size: 12px;
+    }
+  }
+
   &.error {
     border-color: var(--red);
 

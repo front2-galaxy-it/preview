@@ -4,6 +4,7 @@ import { InputProps } from "./props"
 import css from "./styles.module.scss"
 import classNames from "classnames"
 import { Icon } from "../icons"
+
 export const Input: React.FC<InputProps> = ({
   color,
   type,
@@ -15,27 +16,39 @@ export const Input: React.FC<InputProps> = ({
   invalid,
   disabled,
   className,
-
   ...props
 }) => {
-  const [isFilled, setIsFilled] = useState<boolean>(false)
-  const [isNeedToClean, setIsNeedToClean] = useState<boolean>(false)
+  const [value, setValue] = useState("")
+  const [isNeedToClean, setIsNeedToClean] = useState(false)
 
   useEffect(() => {
     if (isNeedToClean) {
-      setIsFilled(false)
+      setValue("")
+      setIsNeedToClean(false)
     }
   }, [isNeedToClean])
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+    if (props.onChange) props.onChange(e)
+  }
+
   return (
     <div
       className={classNames(
-        `${css.input_wrap} ${error ? css.error : ""} ${invalid ? css.invalid : ""}`,
+        css.input_wrap,
+        {
+          [css.error]: error,
+          [css.invalid]: invalid,
+          [css.filled]: value.length > 0,
+        },
         className,
         color && css[`_${color}`],
       )}
     >
       <input
-        isNeedToClean={isNeedToClean}
+        value={value}
+        onChange={handleChange}
         disabled={disabled}
         type={type}
         name={name}
