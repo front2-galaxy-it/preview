@@ -1,0 +1,28 @@
+@import "@/app/styles/scss-utils/index";
+
+.calculator_section {
+  position: relative;
+  @include adaptive-value("padding-top", 160, 65, 1);
+  @include adaptive-value("padding-bottom", 160, 65, 1);
+}
+
+.bg_image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.content {
+  max-width: 777px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  color: var(--white);
+  @include adaptive-value("margin-bottom", 80, 24, 1);
+}

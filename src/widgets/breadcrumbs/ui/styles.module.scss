@@ -1,0 +1,38 @@
+@import "@/app/styles/scss-utils/index";
+
+.breadcrumbs {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 24px var(--container-padding);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.breadcrumb_item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  a {
+    &:hover {
+      color: var(--orange-primary);
+      transition: all 0.3s;
+    }
+  }
+}
+
+.breadcrumb_link {
+  @include adaptive-value("font-size", 16, 12, 1);
+  color: var(--gray-97);
+  transition: all 0.3s;
+}
+
+.current {
+  color: var(--orange-primary);
+}
+
+.separator {
+  width: 16px;
+  height: 16px;
+}

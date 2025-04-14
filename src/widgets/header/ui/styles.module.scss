@@ -1,0 +1,250 @@
+@import "@/app/styles/scss-utils/index";
+
+.header {
+  padding: 24px 0;
+  background-color: var(--black);
+  border-radius: 0 0 5px 5px;
+  border: 1px solid #000000;
+  // position: absolute;
+  position: relative;
+  width: 100%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(48px);
+  }
+
+  // Тут накинул overflow , потому что меню за врапер вылазит , overflow на врапере не обрезает контент почему то. Но с этим overflow не видно меню , так что уберешь его , а там будет видно
+  overflow: hidden;
+
+  @include media-down(lg) {
+    height: 90px;
+  }
+
+  @include media-down(xs) {
+    height: 72px;
+  }
+}
+
+.absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header_content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+
+  @include media-down(sm) {
+    gap: 20px;
+  }
+}
+
+.logo_link {
+  @include adaptive-value("font-size", 32, 28, 1);
+  font-weight: 900;
+  color: var(--white);
+
+  @include media-down(xs) {
+    font-size: 18px;
+  }
+
+  span {
+    color: var(--orange-primary);
+  }
+}
+
+.register_button {
+  display: none !important;
+  max-width: 245px;
+  width: 100%;
+  justify-content: space-between !important;
+  color: var(--orange-primary) !important;
+
+  &::before {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 177, 0, 1) 0%,
+      rgba(255, 63, 21, 1) 100%
+    ) !important;
+  }
+
+  svg {
+    color: var(--orange-primary) !important;
+  }
+}
+
+.premium_button {
+  display: none !important;
+  border: 1px solid var(--orange-secondary) !important;
+  padding: 11px 32px !important;
+  color: var(--orange-secondary) !important;
+  @include adaptive-value("padding-left", 32, 24, 1);
+  @include adaptive-value("padding-right", 32, 24, 1);
+  background: transparent !important;
+
+  &::before {
+    display: none;
+  }
+
+  svg {
+    display: none;
+  }
+}
+
+.header_user_account {
+  display: none;
+}
+
+.cross_icon {
+  display: none !important;
+}
+
+.show {
+  right: 0 !important;
+  transition: all 0.3s !important;
+  transition-delay: 0.6s !important;
+}
+
+.user_button {
+  @include adaptive-value("width", 40, 24, 1);
+  @include adaptive-value("height", 40, 24, 1);
+
+  .user_icon {
+    color: var(--white);
+    transition: all 0.3s;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    .user_icon {
+      color: var(--orange-primary);
+      transition: all 0.3s;
+    }
+  }
+}
+
+.action_buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header_burger {
+  display: none;
+  align-items: center;
+  gap: 3px;
+  min-width: 18px;
+  height: 14px;
+  position: relative;
+
+  @include media-down(lg) {
+    display: flex;
+  }
+
+  &.open {
+    .burger_dots {
+      display: none;
+    }
+
+    .burger_lines {
+      margin: 0;
+      width: 100%;
+
+      span {
+        width: 100%;
+        transition: all 0.3s;
+        transition-delay: 0.5s;
+        background-color: var(--orange-primary);
+        border-radius: 10px;
+
+        &:nth-child(1) {
+          top: 50%;
+          rotate: 45deg;
+          transform: translateY(-50%);
+        }
+
+        &:nth-child(2) {
+          width: 0;
+          transition-delay: 0s;
+        }
+
+        &:nth-child(3) {
+          bottom: 45%;
+          rotate: -45deg;
+          transform: translateY(50%);
+        }
+      }
+    }
+  }
+}
+
+.burger_dots {
+  position: relative;
+  height: 14px;
+  width: 2px;
+
+  span {
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background-color: var(--white);
+    transition: all 0.3s;
+    transition-delay: 0s;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+    }
+  }
+}
+
+.burger_lines {
+  width: 72%;
+  position: relative;
+  height: 14px;
+
+  span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--white);
+    transition: all 0.3s;
+    transition-delay: 0s;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50%;
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+    }
+  }
+}

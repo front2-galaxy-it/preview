@@ -1,0 +1,34 @@
+:root {
+  $colors: (
+    orange-primary: #ff3f15,
+    orange-secondary: #ffb100,
+    red: #d32f2f,
+    green: #4caf50,
+    black: #212121,
+    white: #ffffff,
+    gray: #3c3c3c,
+    gray-59: #595959,
+    gray-77: #777777,
+    gray-97: #979797,
+    gray-B9: #b9b9b9,
+    gray-DB: #dbdbdb,
+  );
+
+  // === Colors variables
+  @each $color, $value in $colors {
+    --#{$color}: #{$value};
+  }
+
+  // === Topography variables
+  --ff-primary: "Montserrat";
+  --font-size: 16px;
+
+  // === Theming variables
+  --bg-primary: var(--white);
+  --text-color-primary: var(--black);
+
+  // === JS Controlling variables
+
+  --container-width: 1392px;
+  --container-padding: 16px;
+}

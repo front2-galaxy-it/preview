@@ -1,0 +1,38 @@
+.customRadio_wrap {
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.customRadio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  width: 120px;
+  padding: 8px;
+  border-radius: 30px;
+  font-size: 16px;
+  color: var(--gray);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+
+  .radioMark {
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    z-index: -1;
+  }
+}
+
+input[type="radio"]:checked + .customRadio {
+  background-color: var(--white);
+  color: var(--orange-secondary);
+}

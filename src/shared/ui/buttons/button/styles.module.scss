@@ -1,0 +1,108 @@
+@import "@/app/styles/scss-utils/index";
+
+.button {
+  --btn-color: var(--white);
+  --btn-bg: var(--orange-primary);
+  position: relative;
+
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 31px;
+  min-width: 148px;
+  @include adaptive-value("font-size", 18, 14, 1);
+  @include adaptive-value("padding-top", 6, 5, 1);
+  @include adaptive-value("padding-bottom", 6, 5, 1);
+  @include adaptive-value("padding-right", 6, 5, 1);
+  padding-left: 32px;
+  transition: all 0.3s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+
+  @include media-down(xs) {
+    padding-left: 12px;
+    min-width: auto;
+  }
+
+  .button_arrow {
+    transition: all 0.3s ease;
+    @include adaptive-value("min-width", 36, 30, 1);
+    @include adaptive-value("min-height", 36, 30, 1);
+    @include adaptive-value("max-width", 36, 30, 1);
+    @include adaptive-value("max-height", 36, 30, 1);
+  }
+
+  &:hover {
+    .button_arrow {
+      rotate: -45deg;
+      transition: all 0.3s ease;
+    }
+  }
+
+  &:active {
+    .button_arrow {
+      rotate: 0deg;
+      transition: all 0.3s ease;
+    }
+  }
+
+  &_primary {
+    background: linear-gradient(90deg, rgba(255, 177, 0, 1) 0%, rgba(255, 63, 21, 1) 100%);
+    color: var(--white);
+
+    .button_arrow {
+      color: var(--white);
+    }
+
+    background:
+      linear-gradient(90deg, rgba(255, 177, 0, 1) 0%, rgba(255, 63, 21, 1) 100%) padding-box,
+      linear-gradient(-30deg, rgba(0, 0, 0, 1) 0%, rgba(102, 102, 102, 1) 100%) border-box !important;
+    border: 1px solid transparent;
+
+    &:disabled {
+      color: var(--gray-DB);
+      background: #b9b9b9;
+      opacity: 1;
+
+      .button_arrow {
+        color: var(--gray-DB);
+      }
+    }
+  }
+
+  &_secondary {
+    color: var(--orange-primary);
+
+    .button_arrow {
+      color: var(--orange-primary);
+    }
+
+    &._black {
+      background:
+        linear-gradient(var(--white), var(--white)) padding-box,
+        linear-gradient(90deg, rgba(255, 177, 0, 1) 0%, rgba(255, 63, 21, 1) 100%) border-box !important;
+      border: 2px solid transparent;
+    }
+
+    background:
+      linear-gradient(var(--bgBtnColor), var(--bgBtnColor)) padding-box,
+      linear-gradient(90deg, rgba(255, 177, 0, 1) 0%, rgba(255, 63, 21, 1) 100%) border-box !important;
+    border: 2px solid transparent;
+
+    &:disabled {
+      color: var(--gray-DB);
+
+      border: 2px solid var(--gray-B9);
+
+      &::before {
+        display: none;
+      }
+
+      .button_arrow {
+        color: var(--gray-DB);
+      }
+    }
+  }
+}

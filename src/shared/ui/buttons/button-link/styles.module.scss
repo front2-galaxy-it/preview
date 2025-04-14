@@ -1,0 +1,47 @@
+@import "@/app/styles/scss-utils/index";
+
+.button_link {
+  color: var(--green);
+  @include adaptive-value("font-size", 18, 14, 1);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  transition: all 0.3s;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--green);
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    &::before {
+      width: 100%;
+      transition: all 0.3s;
+    }
+  }
+
+  &:active {
+    &::before {
+      width: 0;
+      transition: all 0.3s;
+    }
+  }
+
+  &:disabled {
+    color: var(--gray-DB);
+  }
+
+  .small_cross {
+    width: 16px;
+    height: 16px;
+    transition: all 0.3s;
+  }
+}

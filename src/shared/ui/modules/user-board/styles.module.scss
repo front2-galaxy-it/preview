@@ -1,0 +1,122 @@
+.board_item {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+  gap: 15px;
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 100px;
+  padding: 8px;
+  box-shadow: 0 6px 12px rgba(51, 51, 51, 0.12);
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &_small {
+    .exercises_wrap {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: start;
+      gap: 4px;
+      width: max-content;
+
+      .exercise {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        width: 100%;
+
+        span {
+          font-size: 12px !important;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.board_item:global(.green) {
+  --board-main-color: #4caf50;
+  --background-color: rgba(76, 175, 80, 0.2);
+}
+
+.board_item:global(.orange-secondary) {
+  --board-main-color: #ffb100;
+  --background-color: rgba(255, 177, 0, 0.2);
+}
+
+.board_item:global(.orange-primary) {
+  --board-main-color: #ff3f15;
+  --background-color: rgba(255, 63, 21, 0.2);
+}
+
+.item_info,
+.exercises_wrap {
+  display: flex;
+  align-items: center;
+  @include adaptive-value("gap", 48, 12, 1);
+}
+
+.item_info {
+  justify-content: flex-end;
+}
+
+.exercises_wrap {
+  text-align: center;
+
+  @include media-down(sm) {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+    gap: 4px;
+  }
+
+  .exercise {
+    width: max-content;
+
+    @include media-down(sm) {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+    }
+  }
+
+  .exercise_name,
+  .exercise_weight {
+    @include adaptive-value("font-size", 16, 12, 1);
+    font-weight: 500;
+  }
+
+  .exercise_name {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--gray);
+
+    @include media-down(sm) {
+      margin: 0;
+    }
+  }
+
+  .exercise_weight {
+    color: var(--gray-97);
+  }
+}
+
+.total_weigth_wrap {
+  display: grid;
+  place-items: center;
+  @include adaptive-value("min-width", 72, 56, 1);
+  @include adaptive-value("min-height", 72, 56, 1);
+  border-radius: 50%;
+  color: var(--orange-primary);
+
+  border: 1px solid var(--board-main-color);
+  background: var(--background-color);
+
+  .total_weigth {
+    @include adaptive-value("font-size", 16, 14, 1);
+    font-weight: 900;
+    letter-spacing: 0.48px;
+  }
+}

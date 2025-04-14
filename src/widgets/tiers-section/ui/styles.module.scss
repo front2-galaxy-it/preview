@@ -1,0 +1,24 @@
+@import "@/app/styles/scss-utils/index";
+
+.tiers_section {
+  @include adaptive-value("padding-top", 160, 65, 1);
+  @include adaptive-value("padding-bottom", 160, 65, 1);
+}
+
+.title {
+  color: var(--black);
+  @include adaptive-value("margin-bottom", 64, 24, 1);
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  @include adaptive-value("gap", 40, 16, 1);
+}
+
+.text {
+  margin-bottom: 24px;
+  @include adaptive-value("font-size", 20, 16, 1);
+  color: var(--gray);
+}

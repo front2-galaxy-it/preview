@@ -1,0 +1,36 @@
+@import "@/app/styles/scss-utils/index";
+
+.disclaimer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  @include adaptive-value("padding-top", 160, 65, 1);
+  @include adaptive-value("padding-bottom", 160, 65, 1);
+}
+
+.disclaimer_content {
+  max-width: 660px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.disclaimer_title {
+  @include adaptive-value("margin-bottom", 80, 25, 1);
+  text-align: center;
+}
+
+.disclaimer_text {
+  @include adaptive-value("font-size", 20, 14, 1);
+  line-height: 150%;
+  color: var(--gray);
+}
+
+.disclaimer_btn {
+  margin: 24px auto auto auto;
+
+  @include media-down(sm) {
+    width: 100%;
+    justify-content: space-between !important;
+  }
+}

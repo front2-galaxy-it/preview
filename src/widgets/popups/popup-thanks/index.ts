@@ -1,0 +1,1 @@
+export { PopupThanks } from "./ui"

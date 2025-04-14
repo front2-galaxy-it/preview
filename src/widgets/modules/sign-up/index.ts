@@ -1,0 +1,1 @@
+export { SignUpModule } from "./ui"

@@ -1,0 +1,85 @@
+@import "@/app/styles/scss-utils/index";
+
+.terms_section {
+  @include adaptive-value("padding-top", 40, 24, 1);
+  @include adaptive-value("padding-bottom", 160, 93, 1);
+}
+
+.title {
+  @include adaptive-value("margin-bottom", 40, 24, 1);
+}
+
+.date_wrap {
+  @include adaptive-value("margin-bottom", 32, 24, 1);
+  @include adaptive-value("font-size", 20, 16, 1);
+  color: var(--gray-59);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.content {
+  counter-reset: num;
+
+  h5 {
+    color: var(--gray);
+    @include adaptive-value("margin-bottom", 16, 8, 1);
+    counter-increment: num;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &::before {
+      content: counter(num) ".";
+    }
+  }
+
+  p,
+  li {
+    color: var(--gray-59);
+    @include adaptive-value("font-size", 18, 14, 1);
+  }
+
+  li {
+    b {
+      font-weight: 500;
+    }
+  }
+
+  p,
+  ul {
+    @include adaptive-value("margin-bottom", 32, 24, 1);
+  }
+
+  ul {
+    padding-left: 25px;
+  }
+
+  b {
+    @include adaptive-value("font-size", 18, 14, 1);
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: inline-block;
+    color: var(--gray-59);
+  }
+
+  li {
+    list-style: outside;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  a {
+    color: var(--black);
+    font-weight: 500;
+    transition: all 0.3s;
+
+    &:hover {
+      color: var(--orange-primary);
+      transition: all 0.3s;
+    }
+  }
+}

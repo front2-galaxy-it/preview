@@ -1,0 +1,113 @@
+@import "@/app/styles/scss-utils/index";
+
+.popup_payment {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba($color: #212121, $alpha: 0.3);
+  z-index: 1001;
+  max-width: 777px;
+  width: calc(100% - 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  @include adaptive-value("padding-top", 45, 64, 1);
+  @include adaptive-value("padding-bottom", 45, 64, 1);
+  padding-left: 32px;
+  padding-right: 32px;
+
+  display: none;
+}
+
+.close_popup {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: var(--white);
+  @include adaptive-value("width", 40, 32, 1);
+  @include adaptive-value("height", 40, 32, 1);
+}
+
+.popup_content {
+  max-width: 543px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.popup_title {
+  @include adaptive-value("font-size", 40, 24, 1);
+  color: var(--orange-primary);
+  margin-bottom: 32px;
+}
+
+.inputs_wrap,
+.checkboxes_wrap {
+  margin-bottom: 24px;
+}
+
+.inputs_body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 16px;
+}
+
+.popup_input {
+  margin-bottom: 16px;
+
+  &:last-of-type {
+    margin: 0;
+  }
+}
+
+.popup_checkbox {
+  margin-bottom: 8px;
+
+  &:last-of-type {
+    margin: 0;
+  }
+}
+
+.buttons_wrap {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  @include adaptive-value("gap", 32, 16, 1);
+  @include adaptive-value("margin-bottom", 32, 24, 1);
+
+  span {
+    color: var(--white);
+  }
+}
+
+.popup_btn {
+  max-width: 260px;
+  width: 100%;
+  justify-content: space-between;
+  min-width: auto;
+  gap: 0;
+
+  @include media-down(sm) {
+    max-width: 100%;
+  }
+}
+
+.btn_with_icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.forgot {
+  text-align: center;
+  color: var(--white);
+  @include adaptive-value("font-size", 16, 12, 1);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

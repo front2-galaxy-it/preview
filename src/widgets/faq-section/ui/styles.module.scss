@@ -1,0 +1,128 @@
+@import "@/app/styles/scss-utils/index";
+
+.faq_section {
+  @include adaptive-value("padding-top", 80, 30, 1);
+  @include adaptive-value("padding-bottom", 160, 65, 1);
+}
+
+.title {
+  @include adaptive-value("margin-bottom", 80, 24, 1);
+}
+
+.accordion {
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  &[open] {
+    .open_status {
+      &::before {
+        transform: translate(-50%, -50%) rotate(0deg);
+        animation: rotate 0.3s linear;
+        transition: all 0.3s;
+      }
+    }
+
+    .accorion_content {
+      padding-top: 24px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .accordion_title {
+      transition: all 0.3s;
+      border: 1px solid var(--orange-primary);
+      color: var(--orange-primary);
+
+      .open_status {
+        &::after,
+        &::before {
+          transition: all 0.3s;
+          background-color: var(--orange-primary);
+        }
+      }
+    }
+  }
+}
+
+.accordion_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 24px 32px;
+  box-shadow: 0 6px 12px rgba(51, 51, 51, 0.12);
+  border-radius: 100px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  @include adaptive-value("font-size", 20, 16, 1);
+  color: var(--black);
+  cursor: pointer;
+
+  &:hover {
+    transition: all 0.3s;
+    border: 1px solid var(--orange-primary);
+    color: var(--orange-primary);
+
+    .open_status {
+      &::after,
+      &::before {
+        transition: all 0.3s;
+        background-color: var(--orange-primary);
+      }
+    }
+  }
+}
+
+.open_status {
+  position: relative;
+  width: 14px;
+  height: 14px;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    width: 100%;
+    height: 1px;
+    background-color: var(--gray);
+    transition: all 0.3s;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(90deg);
+    animation: rotateBack 0.3s linear;
+  }
+}
+
+.accorion_content {
+  p {
+    @include adaptive-value("font-size", 18, 14, 1);
+    color: var(--gray);
+    line-height: 150%;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes rotateBack {
+  0% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}

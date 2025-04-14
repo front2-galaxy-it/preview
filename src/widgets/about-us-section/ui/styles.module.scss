@@ -1,0 +1,30 @@
+@import "@/app/styles/scss-utils/index";
+
+.about_us_section {
+  @include adaptive-value("padding-top", 40, 24, 1);
+  @include adaptive-value("padding-bottom", 160, 64, 1);
+}
+
+.title {
+  @include adaptive-value("margin-bottom", 40, 24, 1);
+}
+
+.text {
+  @include adaptive-value("font-size", 20, 16, 1);
+  margin-bottom: 16px;
+  color: var(--gray);
+
+  &:last-of-type {
+    @include adaptive-value("margin-bottom", 32, 24, 1);
+  }
+}
+
+.about_btn {
+  max-width: 310px;
+  width: 100%;
+  justify-content: space-between;
+
+  @include media-down(sm) {
+    max-width: 100%;
+  }
+}

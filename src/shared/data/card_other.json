@@ -1,0 +1,33 @@
+{
+  "card": [
+    {
+      "icon_href": "/images/svg/check_icon.svg",
+      "card_title": "Pupal Forge",
+      "card_currency": "$",
+      "card_price": "9.99",
+      "card_rate": "month",
+      "services_list": [
+        { "label": "removes ads", "available": true },
+        { "label": "allows submitting strength to leaderboard", "available": true },
+        { "label": "highlights name", "available": false },
+        { "label": "adds animal icon next to name on leaderboard", "available": false }
+      ],
+      "card_btn": "Register"
+    },
+    {
+      "isPremium": true,
+      "icon_href": "/images/svg/crown.svg",
+      "card_title": "Emergent Colossus",
+      "card_currency": "$",
+      "card_price": "14.99",
+      "card_rate": "month",
+      "services_list": [
+        { "label": "removes ads", "available": true },
+        { "label": "allows submitting strength to leaderboard", "available": true },
+        { "label": "highlights name", "available": true },
+        { "label": "adds animal icon next to name on leaderboard", "available": true }
+      ],
+      "card_btn": "Register"
+    }
+  ]
+}

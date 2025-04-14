@@ -1,0 +1,64 @@
+@import "@/app/styles/scss-utils/index";
+
+.sign_in_content {
+  max-width: 543px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+
+  &._black {
+    --main-black-color: var(--black);
+    --main-gray-color: var(--gray);
+  }
+}
+
+.title {
+  @include adaptive-value("font-size", 40, 24, 1);
+  color: var(--main-block-color);
+  @include adaptive-value("margin-bottom", 32, 16, 1);
+}
+
+.inputs_wrap,
+.checkboxes_wrap {
+  margin-bottom: 24px;
+}
+
+.input {
+  margin-bottom: 16px;
+
+  &:last-of-type {
+    margin: 0;
+  }
+}
+
+.checkbox {
+  margin-bottom: 8px;
+
+  &:last-of-type {
+    margin: 0;
+  }
+}
+
+.buttons_wrap {
+  display: flex;
+  align-items: center;
+  @include adaptive-value("gap", 24, 8, 1);
+  @include adaptive-value("margin-bottom", 32, 24, 1);
+}
+
+.sign_in_btn {
+  width: 100%;
+  justify-content: space-between;
+  min-width: auto;
+  gap: 0;
+}
+
+.forgot {
+  text-align: center;
+  color: var(--main-gray-color);
+  @include adaptive-value("font-size", 16, 12, 1);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
