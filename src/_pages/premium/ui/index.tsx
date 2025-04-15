@@ -17,7 +17,10 @@ export function PremiumPage({ params: { locale } }: IHomePageProps) {
   return (
     <>
       <Breadcrumbs arr={breadcrumbsItems} />
-      <TiersSection text={true} />
+      <TiersSection
+        text={true}
+        className="first_section"
+      />
       <FeedBackSection />
     </>
   )

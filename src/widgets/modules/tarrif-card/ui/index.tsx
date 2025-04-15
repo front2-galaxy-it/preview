@@ -3,6 +3,7 @@
 import classNames from "classnames"
 import css from "./styles.module.scss"
 import { Button } from "@/shared/ui"
+import Image from "next/image"
 
 interface ITarrifCard {
   isPremium?: boolean
@@ -27,8 +28,10 @@ export const TarrifCard: React.FC<CardProps> = ({ className, data }) => {
   return (
     <div className={classNames(css.tarrif_card, className, data.isPremium && css.premium_card)}>
       <div className={css.icon}>
-        <img
+        <Image
           src={data.icon_href}
+          width={68}
+          height={68}
           alt="check icon"
         />
       </div>

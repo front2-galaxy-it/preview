@@ -5,9 +5,10 @@
   background-color: var(--black);
   border-radius: 0 0 5px 5px;
   border: 1px solid #000000;
-  // position: absolute;
-  position: relative;
+  position: fixed;
+  z-index: 1000;
   width: 100%;
+  height: var(--header-height);
 
   &::before {
     content: "";
@@ -16,15 +17,8 @@
     backdrop-filter: blur(48px);
   }
 
-  // Тут накинул overflow , потому что меню за врапер вылазит , overflow на врапере не обрезает контент почему то. Но с этим overflow не видно меню , так что уберешь его , а там будет видно
-  overflow: hidden;
-
-  @include media-down(lg) {
-    height: 90px;
-  }
-
   @include media-down(xs) {
-    height: 72px;
+    height: var(--header-height-mobile);
   }
 }
 

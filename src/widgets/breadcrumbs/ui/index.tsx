@@ -4,6 +4,7 @@ import css from "./styles.module.scss"
 import { RootLink } from "@/shared/ui"
 import { ClientRoutes } from "@/shared/routes"
 import { BreadcrumbsProps } from "./props"
+import Image from "next/image"
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ arr, className, color, ...props }) => {
   return (
@@ -18,9 +19,11 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ arr, className, color,
         >
           {"Home"}
         </RootLink>
-        <img
+        <Image
           className={css.separator}
           src="/images/svg/arrow_right.svg"
+          width={16}
+          height={16}
           alt="arrow"
         />
       </li>
@@ -43,9 +46,11 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ arr, className, color,
                 >
                   {title}
                 </RootLink>
-                <img
+                <Image
                   className={css.separator}
                   src="/images/svg/arrow_right.svg"
+                  width={16}
+                  height={16}
                   alt="arrow"
                 />
               </>

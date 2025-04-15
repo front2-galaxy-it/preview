@@ -6,11 +6,12 @@ import { TarrifCard } from "@/widgets/modules/tarrif-card"
 import cardData from "@/shared/data/card.json"
 interface ITierProps {
   text?: boolean
+  className?: string
 }
 
-export const TiersSection: React.FC<ITierProps> = ({ text }) => {
+export const TiersSection: React.FC<ITierProps> = ({ text, className }) => {
   return (
-    <section className={css.tiers_section}>
+    <section className={classNames(css.tiers_section, className)}>
       <div className="container">
         <h2 className={classNames(css.title, "orange_text")}>
           Premium <span>Tiers</span>

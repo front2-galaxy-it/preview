@@ -1,14 +1,16 @@
 import React from "react"
 import css from "./styles.module.scss"
 import Image from "next/image"
-import { Button } from "@/shared/ui"
+import { Button, RootLink } from "@/shared/ui"
 
 export const Footer: React.FC = () => {
   return (
     <footer className={css.footer}>
-      <img
+      <Image
         className={css.creator_label}
         src="/images/svg/GALAXY_IT.svg"
+        width={325}
+        height={96}
         alt="GALAXY IT"
       />
       <Image
@@ -21,14 +23,12 @@ export const Footer: React.FC = () => {
 
       <div className="container">
         <div className={css.footer_head}>
-          <a
-            href="/"
+          <RootLink
+            href={"/"}
             className={css.logo_link}
-            title="Logo"
-            aria-label="Logo"
           >
             Strength<span>Beasts</span>
-          </a>
+          </RootLink>
           <Button
             modifier="secondary"
             className={css.footer_btn}
@@ -41,51 +41,51 @@ export const Footer: React.FC = () => {
           <nav className={css.footer_nav}>
             <ul className={css.nav_list}>
               <li className={css.nav_list_item}>
-                <a
+                <RootLink
                   href="/"
                   className={css.nav_list_link}
                 >
                   About
-                </a>
+                </RootLink>
               </li>
               <li className={css.nav_list_item}>
-                <a
+                <RootLink
                   href="/premium"
                   className={css.nav_list_link}
                 >
-                  <img
+                  <Image
                     src="/images/svg/crown.svg"
                     width={24}
                     height={24}
                     className={css.crown_icon}
                     alt="Cronw"
                   />
-                  <span>Premium</span>
-                </a>
+                  Premium
+                </RootLink>
               </li>
               <li className={css.nav_list_item}>
-                <a
+                <RootLink
                   href="#leader"
                   className={css.nav_list_link}
                 >
                   Leaderboard
-                </a>
+                </RootLink>
               </li>
               <li className={css.nav_list_item}>
-                <a
+                <RootLink
                   href="/policy"
                   className={css.nav_list_link}
                 >
                   Privacy Policy
-                </a>
+                </RootLink>
               </li>
               <li className={css.nav_list_item}>
-                <a
+                <RootLink
                   href="/terms"
                   className={css.nav_list_link}
                 >
                   Terms of use
-                </a>
+                </RootLink>
               </li>
             </ul>
           </nav>

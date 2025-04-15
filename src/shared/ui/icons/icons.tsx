@@ -7,6 +7,7 @@ import { CheckboxArrow } from "./svg/checkbox-arrow"
 import { PaypalIcon } from "./svg/paypal-icon"
 import { ArrowRight } from "./svg/arrow-right"
 import { OutIcon } from "./svg/out-icon"
+import { PlusIcon } from "./svg/tabler_plus"
 
 export const icons = {
   user_icon: UserIcon,
@@ -18,4 +19,5 @@ export const icons = {
   paypal_icon: PaypalIcon,
   arrow_right: ArrowRight,
   out_icon: OutIcon,
+  plus_icon: PlusIcon,
 }

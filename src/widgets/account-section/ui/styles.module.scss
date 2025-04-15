@@ -9,10 +9,6 @@
   @include adaptive-value("margin-bottom", 40, 24, 1);
 }
 
-.authorization_block {
-  padding-top: 40px;
-}
-
 .user_account_interface {
   display: flex;
   align-items: flex-start;
@@ -72,6 +68,7 @@
   &.current {
     font-weight: 700;
     color: var(--orange-primary);
+    transition: all 0.3s;
   }
 }
 
@@ -103,6 +100,7 @@
 }
 
 .user_account_interface_wrap {
+  position: relative;
   max-width: 893px;
   min-width: 650px;
   width: 100%;
@@ -122,8 +120,7 @@
   @include adaptive-value("padding-left", 58, 16, 1);
   @include adaptive-value("padding-right", 58, 16, 1);
   position: relative;
-
-  // display: none;
+  transition: all 0.3s;
 }
 
 .calc_bg {
@@ -136,10 +133,6 @@
 
 .user_interface_title {
   @include adaptive-value("margin-bottom", 32, 24, 1);
-}
-
-.user_leaderboard {
-  // display: none
 }
 
 .user_achievements {
@@ -234,8 +227,6 @@
 }
 
 .user_plan {
-  // display: none;
-
   .plan_head_wrap {
     @include adaptive-value("margin-bottom", 48, 32, 1);
   }
@@ -529,5 +520,27 @@
     background-color: var(--gray-DB);
     border-radius: 30px;
     padding: 4px;
+  }
+}
+
+.tab {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 0;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
   }
 }

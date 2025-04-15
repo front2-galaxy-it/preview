@@ -2,7 +2,11 @@ $iterate: 8;
 $start: 0;
 
 .pt-header-offset {
-  padding-top: 0;
+  padding-top: 90px;
+
+  @include media-down(sm) {
+    padding-top: 72px;
+  }
 }
 
 .p-0 {

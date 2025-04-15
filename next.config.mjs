@@ -10,7 +10,7 @@ const nextConfig = {
   // distDir: "build",
   // trailingSlash: true,
   images: {
-    unoptimized: true,
+    // unoptimized: true,
     remotePatterns: [
       {
         protocol: "http",

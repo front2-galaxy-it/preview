@@ -8,9 +8,10 @@ import { CustomCheckbox } from "@/shared/ui/custom-checkbox"
 interface ISignInProps {
   className?: string
   color?: string
+  onSignInClick?: () => void
 }
 
-export const SignUpModule: React.FC<ISignInProps> = ({ className, color }) => {
+export const SignUpModule: React.FC<ISignInProps> = ({ className, color, onSignInClick }) => {
   return (
     <div className={classNames(css.sign_in_content, className, color && css[`_${color}`])}>
       <h4 className={css.title}>Sign up</h4>
@@ -45,6 +46,7 @@ export const SignUpModule: React.FC<ISignInProps> = ({ className, color }) => {
           <Button
             modifier="primary"
             className={css.sign_in_btn}
+            onClick={onSignInClick}
           >
             Sign in
           </Button>

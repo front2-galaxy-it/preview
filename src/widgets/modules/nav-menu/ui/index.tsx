@@ -3,6 +3,7 @@
 import classNames from "classnames"
 import css from "./styles.module.scss"
 import { RootLink } from "@/shared/ui"
+import Image from "next/image"
 
 interface MenuProps {
   className?: string
@@ -25,7 +26,7 @@ export const NavMenu: React.FC<MenuProps> = ({ className }) => {
             href="/premium"
             className={css.nav_list_link}
           >
-            <img
+            <Image
               src="/images/svg/crown.svg"
               width={24}
               height={24}

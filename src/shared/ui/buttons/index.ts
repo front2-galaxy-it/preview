@@ -1,4 +1,5 @@
 export { Input } from "../input"
+export { LinkLikeButton } from "./link"
 export { Button } from "./button"
 export { ButtonLink } from "./button-link"
 export { ButtonIcon } from "./button-icon"

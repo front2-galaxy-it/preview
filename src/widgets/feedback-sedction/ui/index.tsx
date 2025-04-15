@@ -5,6 +5,7 @@ import classNames from "classnames"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { useMemo } from "react"
 import { Pagination } from "swiper/modules"
+import Image from "next/image"
 
 export const FeedBackSection: React.FC = () => {
   const breakpoints = useMemo(
@@ -59,9 +60,11 @@ export const FeedBackSection: React.FC = () => {
                   <span className={css.name}>Anne Joe</span>
                   <span className={css.nickname}>@AnneMouse</span>
                 </div>
-                <img
+                <Image
                   className={css.review_icon}
                   src={imagePaths.facebook}
+                  width={40}
+                  height={40}
                   alt="facebook"
                 />
               </div>
@@ -85,9 +88,11 @@ export const FeedBackSection: React.FC = () => {
                   <span className={css.name}>John Base</span>
                   <span className={css.nickname}>@JohnB</span>
                 </div>
-                <img
+                <Image
                   className={css.review_icon}
                   src={imagePaths.google}
+                  width={40}
+                  height={40}
                   alt="google"
                 />
               </div>
@@ -111,9 +116,11 @@ export const FeedBackSection: React.FC = () => {
                   <span className={css.name}>Adam Kraig</span>
                   <span className={css.nickname}>@AdamOfficial</span>
                 </div>
-                <img
+                <Image
                   className={css.review_icon}
                   src={imagePaths.google}
+                  width={40}
+                  height={40}
                   alt="google"
                 />
               </div>
@@ -137,9 +144,11 @@ export const FeedBackSection: React.FC = () => {
                   <span className={css.name}>Anne Joe</span>
                   <span className={css.nickname}>@AnneMouse</span>
                 </div>
-                <img
+                <Image
                   className={css.review_icon}
                   src={imagePaths.facebook}
+                  width={40}
+                  height={40}
                   alt="facebook"
                 />
               </div>
@@ -163,9 +172,11 @@ export const FeedBackSection: React.FC = () => {
                   <span className={css.name}>John Base</span>
                   <span className={css.nickname}>@JohnB</span>
                 </div>
-                <img
+                <Image
                   className={css.review_icon}
                   src={imagePaths.google}
+                  width={40}
+                  height={40}
                   alt="google"
                 />
               </div>
@@ -189,9 +200,11 @@ export const FeedBackSection: React.FC = () => {
                   <span className={css.name}>Adam Kraig</span>
                   <span className={css.nickname}>@AdamOfficial</span>
                 </div>
-                <img
+                <Image
                   className={css.review_icon}
                   src={imagePaths.google}
+                  width={40}
+                  height={40}
                   alt="google"
                 />
               </div>

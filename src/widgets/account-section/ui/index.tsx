@@ -1,7 +1,5 @@
 "use client"
 
-import { SignUpModule } from "@/widgets/modules/sign-up"
-import { SignInModule } from "@/widgets/modules/sign-in"
 import css from "./styles.module.scss"
 import classNames from "classnames"
 import { Button, ButtonLink, Input } from "@/shared/ui/buttons"
@@ -22,6 +20,11 @@ export const AcountSection: React.FC = () => {
     setSelected(e.target.value)
   }
 
+  const [activeTab, setActiveTab] = useState("calculator")
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab)
+  }
+
   return (
     <section className={css.account_section}>
       <div className="container">
@@ -29,14 +32,6 @@ export const AcountSection: React.FC = () => {
           <h2 className={classNames(css.title, "orange_text")}>
             <span>User</span> account
           </h2>
-          <SignInModule
-            className={css.authorization_block}
-            color="black"
-          />
-          <SignUpModule
-            className={css.authorization_block}
-            color="black"
-          />
           <div className={css.user_account_interface}>
             <div className={css.user_account_dashboard}>
               <h5 className={css.user_greertings}>
@@ -44,12 +39,34 @@ export const AcountSection: React.FC = () => {
                 <span className={css.username}>John</span>
               </h5>
               <div className={css.service_list}>
-                <ButtonLink className={classNames(css.list_btn, css.current)}>
+                <ButtonLink
+                  className={classNames(css.list_btn, {
+                    [css.current]: activeTab === "calculator",
+                  })}
+                  onClick={() => handleTabChange("calculator")}
+                >
                   Strength Calculator
                 </ButtonLink>
-                <ButtonLink className={css.list_btn}>Leaderboard</ButtonLink>
-                <ButtonLink className={css.list_btn}>Premium Tiers</ButtonLink>
-                <ButtonLink className={css.list_btn}>Account settings</ButtonLink>
+                <ButtonLink
+                  className={classNames(css.list_btn, {
+                    [css.current]: activeTab === "leaderboard",
+                  })}
+                  onClick={() => handleTabChange("leaderboard")}
+                >
+                  Leaderboard
+                </ButtonLink>
+                <ButtonLink
+                  className={classNames(css.list_btn, { [css.current]: activeTab === "plans" })}
+                  onClick={() => handleTabChange("plans")}
+                >
+                  Premium Tiers
+                </ButtonLink>
+                <ButtonLink
+                  className={classNames(css.list_btn, { [css.current]: activeTab === "settings" })}
+                  onClick={() => handleTabChange("settings")}
+                >
+                  Account settings
+                </ButtonLink>
               </div>
               <ButtonLink
                 renderIcon={true}
@@ -60,7 +77,11 @@ export const AcountSection: React.FC = () => {
             </div>
             <div className={css.user_account_interface_wrap}>
               {/* Block with Strength Calculator */}
-              <div className={css.user_calculator}>
+              <div
+                className={classNames(css.user_calculator, css.tab, {
+                  [css.active]: activeTab === "calculator",
+                })}
+              >
                 <Image
                   className={css.calc_bg}
                   src="/images/section_screen.png"
@@ -71,7 +92,11 @@ export const AcountSection: React.FC = () => {
                 <CalculateLbs color="white" />
               </div>
               {/* Block with Leaderboard */}
-              <div className={css.user_leaderboard}>
+              <div
+                className={classNames(css.user_leaderboard, css.tab, {
+                  [css.active]: activeTab === "leaderboard",
+                })}
+              >
                 <div className={css.user_achievements}>
                   <h4 className={classNames(css.user_interface_title, "orange_text")}>
                     Your latest <span>achievements</span>
@@ -129,14 +154,20 @@ export const AcountSection: React.FC = () => {
                 </div>
               </div>
               {/* Block with Premium Tiers */}
-              <div className={css.user_plan}>
+              <div
+                className={classNames(css.user_plan, css.tab, {
+                  [css.active]: activeTab === "plans",
+                })}
+              >
                 <h4 className={css.user_interface_title}>Your plan</h4>
                 <div className={css.plan_head_wrap}>
                   <div className={css.plan_head}>
                     <div className={css.current_plan}>
-                      <img
+                      <Image
                         className={css.current_plan_icon}
                         src="/images/svg/check-icon-plan.svg"
+                        width={24}
+                        height={24}
                         alt="check icon"
                       />
                       <span className={css.current_plan_title}>Larval Titan</span>
@@ -185,11 +216,6 @@ export const AcountSection: React.FC = () => {
                         <div className={css.filled}></div>
                         <div className={css.filled}></div>
                         <div className={css.filled}></div>
-                        <p className={css.text}>
-                          According to the terms of your plan, you can remove ads if you wish. You
-                          can always choose a different premium plan to have more features and
-                          functions to manage your account.
-                        </p>
                         <ButtonLink
                           renderIcon={true}
                           className={css.item_btn}
@@ -204,11 +230,6 @@ export const AcountSection: React.FC = () => {
                         <div className={css.filled}></div>
                         <div className={css.filled}></div>
                         <div className={css.filled}></div>
-                        <p className={css.text}>
-                          According to the terms of your plan, you can remove ads if you wish. You
-                          can always choose a different premium plan to have more features and
-                          functions to manage your account.
-                        </p>
                         <ButtonLink
                           renderIcon={true}
                           className={css.item_btn}
@@ -223,11 +244,6 @@ export const AcountSection: React.FC = () => {
                         <div className={css.filled}></div>
                         <div className={css.filled}></div>
                         <div className={css.filled}></div>
-                        <p className={css.text}>
-                          According to the terms of your plan, you can remove ads if you wish. You
-                          can always choose a different premium plan to have more features and
-                          functions to manage your account.
-                        </p>
                         <ButtonLink
                           renderIcon={true}
                           className={css.item_btn}
@@ -258,7 +274,11 @@ export const AcountSection: React.FC = () => {
                 </div>
               </div>
               {/* Block with Account settings */}
-              <div className={css.user_settings}>
+              <div
+                className={classNames(css.user_settings, css.tab, {
+                  [css.active]: activeTab === "settings",
+                })}
+              >
                 <div className={css.user_info}>
                   <div className={css.info_row}>
                     <b>Email:</b>

@@ -3,6 +3,7 @@
 import classNames from "classnames"
 import css from "./styles.module.scss"
 import { Input, Button } from "@/shared/ui"
+import Image from "next/image"
 
 interface CalculateLbsProps {
   className?: string
@@ -43,7 +44,7 @@ export const CalculateLbs: React.FC<CalculateLbsProps> = ({ className, color }) 
       </div>
       <div className={css.board_loader}>
         <div className={css.loader}>
-          <img
+          <Image
             className={css.outer_loader}
             src="/images/svg/loader.svg"
             alt="loader"
@@ -52,7 +53,7 @@ export const CalculateLbs: React.FC<CalculateLbsProps> = ({ className, color }) 
           />
           <div className={css.changed_img}>
             <div className={css.innner_loader}>
-              <img
+              <Image
                 src="/images/svg/loader_arrow.svg"
                 alt="loader"
                 width={100}

@@ -3,6 +3,7 @@ import css from "./styles.module.scss"
 import classNames from "classnames"
 import { Icon } from "../../icons"
 import { UserAccountProps } from "./props"
+import Image from "next/image"
 
 export const UserAccount: React.FC<UserAccountProps> = ({
   className,
@@ -44,8 +45,10 @@ export const UserAccount: React.FC<UserAccountProps> = ({
         )}
         {isLogin && (
           <div className={css.animal_icon}>
-            <img
+            <Image
               src={getAnimalImage()}
+              width={40}
+              height={40}
               alt={animalAlt}
             />
           </div>
@@ -53,9 +56,11 @@ export const UserAccount: React.FC<UserAccountProps> = ({
       </div>
       <div className={css.account_info}>
         {isLogin && (
-          <img
+          <Image
             className={css.trohpy_icon}
             src={getTrophyImage()}
+            width={24}
+            height={24}
             alt="trophy"
           />
         )}

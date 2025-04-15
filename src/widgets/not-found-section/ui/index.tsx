@@ -1,8 +1,8 @@
 "use client"
-import { Button } from "@/shared/ui"
 import css from "./styles.module.scss"
 // import classNames from "classnames"
 import Image from "next/image"
+import { LinkLikeButton } from "@/shared/ui/buttons"
 
 export const NotFoundSection: React.FC = () => {
   return (
@@ -18,20 +18,23 @@ export const NotFoundSection: React.FC = () => {
         Strength<span>Beasts</span>
       </h2>
       <div className={css.content}>
-        <img
+        <Image
           className={css.not_found_img}
           src="/images/svg/404.svg"
+          width={505}
+          height={181}
           alt="404"
         />
         <p className={css.text}>
           <span>Oops...</span> Page not found!
         </p>
-        <Button
+        <LinkLikeButton
+          href="/"
           modifier="primary"
           className={css.not_found_btn}
         >
           Back home
-        </Button>
+        </LinkLikeButton>
       </div>
       <Image
         className={css.socket}

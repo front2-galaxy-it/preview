@@ -8,7 +8,8 @@ import { Icon } from "@/shared/ui/icons"
 import { Button } from "@/shared/ui/buttons"
 import classNames from "classnames"
 import { NavMenu } from "@/widgets/modules/nav-menu"
-import { UserAccount } from "@/shared/ui"
+import { RootLink, UserAccount } from "@/shared/ui"
+import Image from "next/image"
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -49,12 +50,12 @@ export const Header: React.FC = () => {
           </a>
           <Button className={classNames(css.register_button, "black_bg_btn")}>Register</Button>
           <Button className={classNames(css.premium_button)}>
-            <img
+            <Image
               src="/images/svg/crown.svg"
               width={24}
               height={24}
               className={css.crown_icon}
-              alt="Crown"
+              alt="Cronw"
             />
             Emergent Colossus
           </Button>
@@ -68,7 +69,7 @@ export const Header: React.FC = () => {
           />
           <NavMenu className={`${isOpen ? css.show : ""}`} />
           <div className={css.action_buttons}>
-            <a
+            <RootLink
               href="/account"
               className={css.user_button}
             >
@@ -78,7 +79,7 @@ export const Header: React.FC = () => {
                 width={40}
                 height={40}
               />
-            </a>
+            </RootLink>
             <button
               className={`${css.header_burger} ${isOpen ? css.open : ""}`}
               onClick={toggleMenu}

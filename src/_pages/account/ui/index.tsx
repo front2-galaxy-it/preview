@@ -3,6 +3,7 @@ import { IHomePageProps } from "./props"
 import { Breadcrumbs } from "@/widgets/breadcrumbs"
 import { IBreadCrumbsItem } from "@/shared/types/layout.interface"
 import { AcountSection } from "@/widgets/account-section"
+import { AuthorizationSection } from "@/widgets/authorization-section"
 
 export function AccountPage({ params: { locale } }: IHomePageProps) {
   unstable_setRequestLocale(locale)
@@ -22,6 +23,7 @@ export function AccountPage({ params: { locale } }: IHomePageProps) {
   return (
     <>
       <Breadcrumbs arr={breadcrumbsItems} />
+      <AuthorizationSection />
       <AcountSection />
     </>
   )

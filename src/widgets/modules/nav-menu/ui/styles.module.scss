@@ -2,8 +2,8 @@
 
 .header_nav {
   @include media-down(lg) {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: var(--header-height);
     right: -100%;
     height: calc(100vh - 90px);
     top: 90px;
@@ -16,7 +16,7 @@
   }
 
   @include media-down(xs) {
-    top: 72px;
+    top: var(--header-height-mobile);
     height: calc(100vh - 72px);
   }
 }
