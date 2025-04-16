@@ -4,12 +4,23 @@ import classNames from "classnames"
 import css from "./styles.module.scss"
 import { RootLink } from "@/shared/ui"
 import Image from "next/image"
-
+import { usePopup } from "@/shared/hooks/PopupHooks"
+import { useAuth } from "@/shared/lib/context/AuthContext"
 interface MenuProps {
   className?: string
 }
 
 export const NavMenu: React.FC<MenuProps> = ({ className }) => {
+  const { isLoggedIn } = useAuth()
+
+  const { openPopup } = usePopup()
+
+  const handleOpenLeaderBoard = (e: React.MouseEvent) => {
+    if (!isLoggedIn) {
+      e.preventDefault()
+      openPopup("leaderboard")
+    }
+  }
   return (
     <nav className={classNames(css.header_nav, className)}>
       <ul className={css.nav_list}>
@@ -48,6 +59,7 @@ export const NavMenu: React.FC<MenuProps> = ({ className }) => {
           <RootLink
             href="/#leader"
             className={css.nav_list_link}
+            onClick={handleOpenLeaderBoard}
           >
             Leaderboard
           </RootLink>

@@ -5,25 +5,23 @@ import { Footer } from "@/widgets/footer"
 import cn from "classnames"
 import css from "./styles.module.scss"
 import { ILayoutProps } from "./props"
-import { PopupLeaderboard } from "@/widgets/popups/popup-leaderboard"
-import { PopupThanks } from "@/widgets/popups/popup-thanks"
-import { PopupPlan } from "@/widgets/popups/popup-plan"
-import { PopupSignIn } from "@/widgets/popups/popup-signin"
-import { PopupPayment } from "@/widgets/popups/popup-payment"
+import { AuthProvider } from "@/shared/lib/context/AuthContext"
+import { PopupProvider } from "@/shared/hooks/PopupHooks"
+import { PopupController } from "@/shared/lib"
 
 export const Layout: React.FC<ILayoutProps> = ({ children, locale }) => {
   return (
     <ServerProviders locale={locale}>
-      <div className={css.wrapper}>
-        <Header />
-        <main className={cn(css.content, "pt-header-offset")}>{children}</main>
-        <Footer />
-        <PopupLeaderboard />
-        <PopupThanks />
-        <PopupPlan />
-        <PopupSignIn />
-        <PopupPayment />
-      </div>
+      <AuthProvider>
+        <PopupProvider>
+          <div className={css.wrapper}>
+            <Header />
+            <main className={cn(css.content, "pt-header-offset")}>{children}</main>
+            <Footer />
+            <PopupController />
+          </div>
+        </PopupProvider>
+      </AuthProvider>
     </ServerProviders>
   )
 }

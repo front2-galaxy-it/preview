@@ -11,6 +11,17 @@ import { Icon } from "@/shared/ui/icons"
 import { TarrifCard } from "@/widgets/modules/tarrif-card"
 import cardData from "@/shared/data/card_other.json"
 import { useState } from "react"
+import { useForm, Controller } from "react-hook-form"
+
+type AccountFormData = {
+  email: string
+  firstName: string
+  lastName: string
+  dateOfBirth: string
+  genderSelect: string
+  phone: string
+  password: string
+}
 
 export const AcountSection: React.FC = () => {
   const defaultGender = "Female"
@@ -23,6 +34,28 @@ export const AcountSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState("calculator")
   const handleTabChange = (tab: string) => {
     setActiveTab(tab)
+  }
+
+  const { reset } = useForm()
+
+  const handleCancel = () => {
+    reset()
+  }
+
+  // const handleSignOut = () => {}
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<AccountFormData>({
+    defaultValues: {
+      genderSelect: defaultGender,
+    },
+  })
+
+  const onSubmit = (data: AccountFormData) => {
+    console.log("EditAccountSettings submitted with:", data)
   }
 
   return (
@@ -304,7 +337,10 @@ export const AcountSection: React.FC = () => {
                 <h4 className={classNames(css.user_interface_title, "orange_text")}>
                   <span>Edit</span> my details
                 </h4>
-                <div className={css.form_wrap}>
+                <form
+                  className={css.form_wrap}
+                  onSubmit={handleSubmit(onSubmit)}
+                >
                   <div className={css.info_wrap}>
                     <span className={classNames(css.input_label, css.left_side)}></span>
                     <span className={classNames(css.tip, css.right_side)}>
@@ -313,11 +349,23 @@ export const AcountSection: React.FC = () => {
                   </div>
                   <div className={css.info_wrap}>
                     <span className={classNames(css.input_label, css.left_side)}>Email*</span>
-                    <Input
-                      type="email"
-                      className={css.right_side}
-                      label="Email"
-                      color="black"
+                    <Controller
+                      name="email"
+                      control={control}
+                      defaultValue=""
+                      rules={{
+                        required: "Required field",
+                      }}
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          type="email"
+                          className={css.right_side}
+                          label="Email"
+                          color="black"
+                          error={errors.email}
+                        />
+                      )}
                     />
                   </div>
                   <div className={css.info_wrap}>
@@ -329,58 +377,126 @@ export const AcountSection: React.FC = () => {
                   </div>
                   <div className={css.info_wrap}>
                     <span className={classNames(css.input_label, css.left_side)}>First Name*</span>
-                    <Input
-                      className={css.right_side}
-                      label="First Name"
-                      color="black"
+                    <Controller
+                      name="firstName"
+                      control={control}
+                      defaultValue=""
+                      rules={{
+                        required: "Required field",
+                      }}
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          type="text"
+                          className={css.right_side}
+                          error={errors.firstName}
+                          label="First Name"
+                          color="black"
+                        />
+                      )}
                     />
                   </div>
                   <div className={css.info_wrap}>
                     <span className={classNames(css.input_label, css.left_side)}>Last Name*</span>
-                    <Input
-                      className={css.right_side}
-                      label="Last Name"
-                      color="black"
+                    <Controller
+                      name="lastName"
+                      control={control}
+                      defaultValue=""
+                      rules={{
+                        required: "Required field",
+                      }}
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          type="text"
+                          className={css.right_side}
+                          error={errors.firstName}
+                          label="Last Name"
+                          color="black"
+                        />
+                      )}
                     />
                   </div>
                   <div className={css.info_wrap}>
                     <span className={classNames(css.input_label, css.left_side)}>
                       Date of Birth*
                     </span>
-                    <Input
-                      type="date"
-                      className={css.right_side}
-                      label="Date of Birth"
-                      color="black"
+                    <Controller
+                      name="dateOfBirth"
+                      control={control}
+                      defaultValue=""
+                      rules={{
+                        required: "Date of birth is required",
+                        validate: (value) => {
+                          if (new Date(value) > new Date()) {
+                            return "Date cannot be in the future"
+                          }
+                          return true
+                        },
+                      }}
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          type="date"
+                          className={css.right_side}
+                          label="Date of Birth"
+                          color="black"
+                          error={errors.dateOfBirth}
+                        />
+                      )}
                     />
                   </div>
                   <div className={css.info_wrap}>
                     <span className={classNames(css.input_label, css.left_side)}>Gender*</span>
                     <div className={css.custom_radio}>
-                      <CustomRadio
-                        label="Female"
-                        name="customOption"
-                        value="Female"
-                        checked={selected === "Female"}
-                        onChange={handleChange}
-                      />
-
-                      <CustomRadio
-                        label="Male"
-                        name="customOption"
-                        value="Male"
-                        checked={selected === "Male"}
-                        onChange={handleChange}
+                      <Controller
+                        name="genderSelect"
+                        control={control}
+                        rules={{ required: "Please select an option" }}
+                        render={({ field }) => (
+                          <>
+                            <CustomRadio
+                              {...field}
+                              label="Female"
+                              value="Female"
+                              checked={selected === "Female"}
+                              onChange={handleChange}
+                            />
+                            <CustomRadio
+                              {...field}
+                              label="Male"
+                              value="Male"
+                              checked={selected === "Male"}
+                              onChange={handleChange}
+                            />
+                          </>
+                        )}
                       />
                     </div>
                   </div>
                   <div className={css.info_wrap}>
                     <span className={classNames(css.input_label, css.left_side)}>Phone Number</span>
-                    <Input
-                      type="tel"
-                      className={css.right_side}
-                      label="Phone Number"
-                      color="black"
+                    <Controller
+                      name="phone"
+                      control={control}
+                      defaultValue=""
+                      rules={{
+                        required: "Phone number is required",
+                        pattern: {
+                          value: /^[0-9]{10}$/,
+                          message: "Phone number must be 10 digits",
+                        },
+                      }}
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          type="tel"
+                          className={css.right_side}
+                          label="Phone Number"
+                          color="black"
+                          error={errors.phone}
+                        />
+                      )}
                     />
                   </div>
                   <div className={css.info_wrap}>
@@ -392,11 +508,24 @@ export const AcountSection: React.FC = () => {
                   </div>
                   <div className={css.info_wrap}>
                     <span className={classNames(css.input_label, css.left_side)}>Password*</span>
-                    <Input
-                      type="password"
-                      className={css.right_side}
-                      label="Password"
-                      color="black"
+                    <Controller
+                      name="password"
+                      control={control}
+                      defaultValue=""
+                      rules={{
+                        required: "Required field",
+                        minLength: { value: 3, message: "At least 3 characters" },
+                      }}
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          type="password"
+                          className={css.right_side}
+                          label="Password"
+                          color="black"
+                          error={errors.password}
+                        />
+                      )}
                     />
                   </div>
                   <div className={css.info_wrap}>
@@ -411,6 +540,7 @@ export const AcountSection: React.FC = () => {
                       <Button
                         className={css.info_btn}
                         modifier="primary"
+                        type="submit"
                       >
                         Save
                       </Button>
@@ -418,6 +548,7 @@ export const AcountSection: React.FC = () => {
                         className={css.info_btn}
                         modifier="secondary"
                         color="black"
+                        onClick={handleCancel}
                       >
                         Canсel
                       </Button>
@@ -427,7 +558,10 @@ export const AcountSection: React.FC = () => {
                     className={classNames(css.info_wrap, css.info_btn_wrap, css.sign_out_btn_wrap)}
                   >
                     <span className={classNames(css.input_label, css.left_side)}></span>
-                    <button className={css.sign_out_btn}>
+                    <button
+                      className={css.sign_out_btn}
+                      // onClick={handleSignOut}
+                    >
                       <Icon
                         name="out_icon"
                         className={css.out_icon}
@@ -435,7 +569,7 @@ export const AcountSection: React.FC = () => {
                       Sign Out
                     </button>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

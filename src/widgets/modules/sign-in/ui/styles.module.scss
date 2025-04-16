@@ -7,14 +7,25 @@
   text-align: center;
 
   &._black {
-    --main-black-color: var(--black);
-    --main-gray-color: var(--gray);
+    --main-color: var(--black);
+
+    .forgot {
+      color: var(--gray);
+    }
+  }
+
+  &._white {
+    --main-color: var(--white);
+
+    .forgot {
+      color: var(--white);
+    }
   }
 }
 
 .title {
   @include adaptive-value("font-size", 40, 24, 1);
-  color: var(--main-block-color);
+  color: var(--main-color);
   @include adaptive-value("margin-bottom", 32, 16, 1);
 }
 
@@ -55,7 +66,6 @@
 
 .forgot {
   text-align: center;
-  color: var(--main-gray-color);
   @include adaptive-value("font-size", 16, 12, 1);
 
   &:hover {

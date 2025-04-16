@@ -7,10 +7,18 @@ import cardData from "@/shared/data/card.json"
 import { TarrifCard } from "@/widgets/modules/tarrif-card"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper/modules"
+import { usePopup } from "@/shared/hooks/PopupHooks"
 
 export const PopupPlan: React.FC = () => {
+  const { currentPopup } = usePopup()
+  const isOpen = currentPopup === "plan"
   return (
-    <div className={classNames(css.popup_plan, "blured")}>
+    <div
+      className={classNames(css.popup_plan, "blured", {
+        [css.visible]: isOpen,
+        [css.hidden]: !isOpen,
+      })}
+    >
       <ButtonIcon className={css.close_popup}></ButtonIcon>
       <div className={css.popup_content}>
         <h4 className={css.popup_title}>Choose a premium plan</h4>

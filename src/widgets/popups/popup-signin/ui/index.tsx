@@ -9,7 +9,7 @@ export const PopupSignIn: React.FC = () => {
   return (
     <div className={classNames(css.popup_signin, "blured")}>
       <ButtonIcon className={css.close_popup}></ButtonIcon>
-      <SignInModule />
+      <SignInModule color="white" />
     </div>
   )
 }

@@ -8,6 +8,11 @@
     --main-color: var(--black);
     --secondary-color: var(--gray);
   }
+
+  &._white {
+    --main-color: var(--white);
+    --main-gray-color: var(--gray);
+  }
 }
 
 .checkbox_input {
@@ -38,7 +43,7 @@
 
 .checkbox_label {
   font-size: 14px;
-  color: var(--secondary-color);
+  color: var(--main-color);
 }
 
 .checkbox_custom.checked {

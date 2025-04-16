@@ -13,7 +13,6 @@ import Image from "next/image"
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
-
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
