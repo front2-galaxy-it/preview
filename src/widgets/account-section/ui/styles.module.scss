@@ -314,6 +314,12 @@
         content: url(/images/svg/check_icon_small.svg);
       }
     }
+
+    .add_btn {
+      svg {
+        rotate: -45deg;
+      }
+    }
   }
 
   &.unavailable_service {

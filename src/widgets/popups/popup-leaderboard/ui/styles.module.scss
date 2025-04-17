@@ -14,18 +14,15 @@
   align-items: center;
   justify-content: center;
   padding: 16px;
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition:
-    opacity 0.3s ease 0s,
-    transform 0.3s ease 0s;
 
   &.visible {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
+    animation: fadeIn .6s ease-out forwards;
   }
 
   &.hidden {
@@ -64,4 +61,14 @@
 
 .popup_btn {
   margin: 0 auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

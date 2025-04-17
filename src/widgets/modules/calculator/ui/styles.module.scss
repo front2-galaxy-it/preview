@@ -49,7 +49,6 @@
   max-width: 380px;
   width: 100%;
   margin: 0 auto;
-  // display: none;
 
   .loader {
     position: relative;
@@ -63,14 +62,31 @@
     inset: 0;
   }
 
-  .innner_loader {
+  .innner_loader,
+  .animal_icon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100px;
     height: 100px;
+  }
 
+  .animal_icon {
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--green);
+    background: rgba($color: #319F43, $alpha: 0.2);
+    animation: fadeIn 1s ease-out forwards;
+
+    img {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  .innner_loader {
     img {
       animation: rotateRight 5s linear infinite;
     }
@@ -83,18 +99,26 @@
     }
   }
 
-  .sternght_number {
+  .strength_number {
     background: linear-gradient(120deg, #ffb100, #ff3f15);
     background-clip: text;
     color: transparent;
     @include adaptive-value(" margin-bottom", 24, 16, 1);
-
-    span {
-      display: none;
-    }
   }
 
   .loader_title {
     color: var(--white);
+    animation: fadeIn 1s ease-out forwards;
+    text-align: center;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

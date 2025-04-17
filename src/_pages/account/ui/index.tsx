@@ -11,15 +11,16 @@ export function AccountPage({ params: { locale } }: IHomePageProps) {
   const breadcrumbsItems: IBreadCrumbsItem[] = [
     {
       type: "parent",
-      slug: "User account",
+      slug: "/user-account",
       title: "User account",
     },
     {
       type: "parent",
-      slug: "Sign in",
+      slug: "/sign-in",
       title: "Sign in",
     },
   ]
+
   return (
     <>
       <Breadcrumbs arr={breadcrumbsItems} />

@@ -5,7 +5,7 @@ import { localeConfig } from "@/app/localization"
 import { Layout } from "@/widgets/layout"
 
 export const metadata: Metadata = {
-  title: "Galaxy IT",
+  title: "FitnessLeader",
   description: "Galaxy IT",
 }
 

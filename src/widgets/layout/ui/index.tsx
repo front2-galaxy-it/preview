@@ -8,20 +8,22 @@ import { ILayoutProps } from "./props"
 import { AuthProvider } from "@/shared/lib/context/AuthContext"
 import { PopupProvider } from "@/shared/hooks/PopupHooks"
 import { PopupController } from "@/shared/lib"
+import { IsLogin } from "@/widgets/popups/isLogin"
 
 export const Layout: React.FC<ILayoutProps> = ({ children, locale }) => {
   return (
-    <ServerProviders locale={locale}>
-      <AuthProvider>
+    <AuthProvider>
+      <ServerProviders locale={locale}>
         <PopupProvider>
           <div className={css.wrapper}>
             <Header />
             <main className={cn(css.content, "pt-header-offset")}>{children}</main>
             <Footer />
             <PopupController />
+            <IsLogin />
           </div>
         </PopupProvider>
-      </AuthProvider>
-    </ServerProviders>
+      </ServerProviders>
+    </AuthProvider>
   )
 }

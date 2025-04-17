@@ -2,7 +2,7 @@
 
 .feedback_section {
   @include adaptive-value("padding-top", 80, 30, 1);
-  @include adaptive-value("padding-bottom", 160, 65, 1);
+  @include adaptive-value("padding-bottom", 80, 30, 1);
 }
 
 .title {

@@ -11,11 +11,5 @@ export default function CatchAllPage() {
 }
 
 export async function generateStaticParams() {
-  return [
-    { rest: ["about"] },
-    { rest: ["account"] },
-    { rest: ["policy"] },
-    { rest: ["premium"] },
-    { rest: ["terms"] },
-  ]
+  return
 }

@@ -6,6 +6,9 @@ import css from "./styles.module.scss"
 import { CustomCheckbox } from "@/shared/ui/custom-checkbox"
 import { Icon } from "@/shared/ui/icons"
 import { useForm, Controller } from "react-hook-form"
+import { usePopup } from "@/shared/hooks/PopupHooks"
+import React, { useEffect } from "react"
+import { PopupProps } from "@/shared/types/popupProps"
 
 type PopupPaymentData = {
   cardNumber: number
@@ -16,7 +19,22 @@ type PopupPaymentData = {
   agreePrivacy?: boolean
 }
 
-export const PopupPayment: React.FC = () => {
+export const PopupPayment: React.FC<PopupProps> = ({ onClose }) => {
+  const { currentPopup } = usePopup()
+  const isOpen = currentPopup === "thanks"
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
+
   const {
     control,
     handleSubmit,
@@ -24,11 +42,14 @@ export const PopupPayment: React.FC = () => {
   } = useForm<PopupPaymentData>()
 
   const onSubmit = (data: PopupPaymentData) => {
-    console.log(data) // Send form data to server
+    console.log(data)
   }
   return (
     <div className={classNames(css.popup_payment, "blured")}>
-      <ButtonIcon className={css.close_popup}></ButtonIcon>
+      <ButtonIcon
+        className={css.close_popup}
+        onClick={onClose}
+      ></ButtonIcon>
       <div className={css.popup_content}>
         <h4 className={css.popup_title}>$14.99</h4>
         <form

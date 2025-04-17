@@ -8,10 +8,24 @@ import { TarrifCard } from "@/widgets/modules/tarrif-card"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from "swiper/modules"
 import { usePopup } from "@/shared/hooks/PopupHooks"
+import React, { useEffect } from "react"
+import { PopupProps } from "@/shared/types/popupProps"
 
-export const PopupPlan: React.FC = () => {
+export const PopupPlan: React.FC<PopupProps> = ({ onClose }) => {
   const { currentPopup } = usePopup()
   const isOpen = currentPopup === "plan"
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
   return (
     <div
       className={classNames(css.popup_plan, "blured", {
@@ -19,7 +33,10 @@ export const PopupPlan: React.FC = () => {
         [css.hidden]: !isOpen,
       })}
     >
-      <ButtonIcon className={css.close_popup}></ButtonIcon>
+      <ButtonIcon
+        className={css.close_popup}
+        onClick={onClose}
+      ></ButtonIcon>
       <div className={css.popup_content}>
         <h4 className={css.popup_title}>Choose a premium plan</h4>
         <div className={css.card_wrap}>

@@ -48,7 +48,6 @@ export const PopupLeaderboard: React.FC<PopupProps> = ({ onClose }) => {
         <Button
           modifier="primary"
           className={css.popup_btn}
-          onClick={onClose}
         >
           Register
         </Button>

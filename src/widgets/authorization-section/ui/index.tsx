@@ -5,8 +5,10 @@ import { SignInModule } from "@/widgets/modules/sign-in"
 import css from "./styles.module.scss"
 import classNames from "classnames"
 import { useState } from "react"
+import { useAuth } from "@/shared/lib/context/AuthContext"
 
 export const AuthorizationSection: React.FC = () => {
+  const { isLoggedIn } = useAuth()
   const [isSignIn, setIsSignIn] = useState(true)
 
   const handleGoToSignUp = () => {
@@ -16,34 +18,35 @@ export const AuthorizationSection: React.FC = () => {
   const handleGoToSignIn = () => {
     if (!isSignIn) setIsSignIn(true)
   }
-
-  return (
-    <section className={css.account_section}>
-      <div className="container">
-        <h2 className={classNames(css.title, "orange_text")}>
-          <span>User</span> account
-        </h2>
-        <div className={css.content}>
-          <div className={css.flip_container}>
-            <div className={classNames(css.cube, { [css.flipped]: !isSignIn })}>
-              <div className={css.front}>
-                <SignInModule
-                  className={css.authorization_block}
-                  color="black"
-                  onSignUpClick={handleGoToSignUp}
-                />
-              </div>
-              <div className={css.back}>
-                <SignUpModule
-                  className={css.authorization_block}
-                  color="black"
-                  onSignInClick={handleGoToSignIn}
-                />
+  if (!isLoggedIn) {
+    return (
+      <section className={css.account_section}>
+        <div className="container">
+          <h2 className={classNames(css.title, "orange_text")}>
+            <span>User</span> account
+          </h2>
+          <div className={css.content}>
+            <div className={css.flip_container}>
+              <div className={classNames(css.cube, { [css.flipped]: !isSignIn })}>
+                <div className={css.front}>
+                  <SignInModule
+                    className={css.authorization_block}
+                    color="black"
+                    onSignUpClick={handleGoToSignUp}
+                  />
+                </div>
+                <div className={css.back}>
+                  <SignUpModule
+                    className={css.authorization_block}
+                    color="black"
+                    onSignInClick={handleGoToSignIn}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  )
+      </section>
+    )
+  }
 }
