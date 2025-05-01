@@ -10,7 +10,7 @@
   }
 
   &._white {
-    --main-color: var(--black);
+    --main-color: #160f0f;
   }
 
   &.invalid {
@@ -35,12 +35,17 @@
 
   &.filled {
     border-color: var(--orange-secondary);
+
     label {
       transition: all 0.3s;
       color: var(--orange-secondary);
       top: -9px;
       left: 32px;
       font-size: 12px;
+
+      &::before {
+        background-color: var(--main-color) !important;
+      }
     }
   }
 
@@ -62,6 +67,12 @@
   &:focus-within {
     transition: all 0.3s;
     border-color: var(--orange-secondary);
+
+    label {
+      &::before {
+        background-color: var(--main-color) !important;
+      }
+    }
   }
 
   &:hover:not(:has(input:disabled)) {
@@ -82,14 +93,14 @@
     &::before {
       content: "";
       position: absolute;
-      bottom: 0;
+      bottom: 5.5px;
       left: 50%;
       transform: translateX(-50%);
       width: 110%;
-      height: 60%;
+      height: 2px;
       z-index: -1;
       transition: all 0.3s;
-      background-color: var(--main-color) !important;
+      background-color: transparent !important;
     }
   }
 
